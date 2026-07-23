@@ -9,206 +9,165 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --p:       #5B2C6F;
-    --p2:      #8E44AD;
-    --p3:      #A569BD;
-    --p-light: #F3ECF9;
-    --p-mid:   #D2B4DE;
-    --gold:    #B7770D;
-    --gold-bg: #FFF8E7;
-    --gold-bd: #F0C040;
-    --green:   #2E7D32;
-    --green-bg:#E8F5E9;
-    --green-bd:#81C784;
-    --blue:    #1565C0;
-    --blue-bg: #E3F2FD;
-    --blue-bd: #64B5F6;
-    --pink:    #880E4F;
-    --pink-bg: #FCE4EC;
-    --pink-bd: #F48FB1;
-    --tx:      #1A1A1A;
-    --tx2:     #555;
-    --bg:      #F5F0FA;
-    --border:  #E0D0EC;
-    --radius:  12px;
-    --shadow:  0 2px 16px rgba(91,44,111,.10);
+    --p:#5B2C6F; --p2:#8E44AD; --p3:#A569BD; --p-light:#F3ECF9; --p-mid:#D2B4DE;
+    --gold:#B7770D; --gold-bg:#FFF8E7; --gold-bd:#F0C040;
+    --green:#2E7D32; --green-bg:#E8F5E9; --green-bd:#81C784;
+    --blue:#1565C0; --blue-bg:#E3F2FD; --blue-bd:#64B5F6;
+    --pink:#880E4F; --pink-bg:#FCE4EC; --pink-bd:#F48FB1;
+    --tx:#1A1A1A; --tx2:#555; --bg:#F5F0FA; --border:#E0D0EC; --radius:12px;
   }
-
-  body {
-    font-family: 'Inter', 'Helvetica Neue', sans-serif;
-    background: var(--bg);
-    color: var(--tx);
-    min-height: 100vh;
-    padding: 2rem 1rem 4rem;
-  }
-
-  .container { max-width: 640px; margin: 0 auto; }
+  body { font-family:'Inter','Helvetica Neue',sans-serif; background:var(--bg); color:var(--tx); min-height:100vh; padding:2rem 1rem 4rem; }
+  .container { max-width:640px; margin:0 auto; }
 
   /* HEADER */
   .header {
-    background: linear-gradient(135deg, var(--p) 0%, var(--p2) 60%, var(--p3) 100%);
-    border-radius: 16px;
-    padding: 1.75rem 2rem;
-    margin-bottom: 1.25rem;
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-    box-shadow: var(--shadow);
+    background:linear-gradient(135deg,var(--p) 0%,var(--p2) 60%,var(--p3) 100%);
+    border-radius:16px; padding:1.5rem 1.75rem; margin-bottom:1.25rem;
+    display:flex; align-items:center; gap:1.25rem;
+    box-shadow:0 2px 16px rgba(91,44,111,.18);
   }
   .logo-circle {
-    width: 56px; height: 56px; border-radius: 50%;
-    background: rgba(255,255,255,.18); border: 2px solid rgba(255,255,255,.4);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0; overflow: hidden;
+    width:54px; height:54px; border-radius:50%;
+    background:rgba(255,255,255,.18); border:2px solid rgba(255,255,255,.4);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden;
   }
-  .logo-circle img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-  .logo-circle svg { width: 30px; height: 30px; fill: none; stroke: white; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-  .header-text p.supra { font-size: 11px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 4px; }
-  .header-text h1 { font-size: 20px; font-weight: 700; color: white; margin-bottom: 4px; line-height: 1.2; }
-  .header-text p.sub { font-size: 12.5px; color: rgba(255,255,255,.72); }
+  .logo-circle img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+  .logo-circle svg { width:28px; height:28px; fill:none; stroke:white; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .header-text { flex:1; }
+  .header-text .supra { font-size:11px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:rgba(255,255,255,.65); margin-bottom:3px; }
+  .header-text h1 { font-size:19px; font-weight:700; color:white; margin-bottom:3px; line-height:1.2; }
+  .header-text .sub { font-size:12px; color:rgba(255,255,255,.7); }
+
+  /* LANG TOGGLE */
+  .lang-toggle {
+    display:flex; gap:4px; flex-shrink:0;
+    background:rgba(255,255,255,.15); border-radius:8px; padding:3px;
+  }
+  .lang-btn {
+    font-family:'Inter',sans-serif; font-size:12px; font-weight:700;
+    padding:5px 10px; border-radius:6px; border:none; cursor:pointer;
+    background:transparent; color:rgba(255,255,255,.65);
+    transition:all .2s; letter-spacing:.04em;
+  }
+  .lang-btn.active { background:rgba(255,255,255,.9); color:var(--p); }
+  .lang-btn:hover:not(.active) { color:white; background:rgba(255,255,255,.2); }
 
   .intro-banner {
-    background: var(--p-light); border-left: 3px solid var(--p3);
-    border-radius: 0 8px 8px 0; padding: .75rem 1rem; margin-bottom: 1.25rem;
-    font-size: 13px; color: var(--p); line-height: 1.6;
+    background:var(--p-light); border-left:3px solid var(--p3);
+    border-radius:0 8px 8px 0; padding:.75rem 1rem; margin-bottom:1.25rem;
+    font-size:13px; color:var(--p); line-height:1.6;
   }
 
   /* CARDS */
-  .card {
-    border-radius: var(--radius); border: 1px solid var(--border);
-    padding: 1.25rem 1.5rem; margin-bottom: 1rem;
-    box-shadow: 0 1px 6px rgba(0,0,0,.06);
-  }
-  .card.q1 { background: linear-gradient(135deg, var(--p-light) 0%, #fff 60%); border-color: var(--p-mid); }
-  .card.q2 { background: linear-gradient(135deg, var(--gold-bg) 0%, #fff 60%); border-color: var(--gold-bd); }
-  .card.q3 { background: linear-gradient(135deg, var(--green-bg) 0%, #fff 60%); border-color: var(--green-bd); }
-  .card.q4 { background: linear-gradient(135deg, var(--blue-bg) 0%, #fff 60%); border-color: var(--blue-bd); }
-  .card.q5 { background: linear-gradient(135deg, var(--pink-bg) 0%, #fff 60%); border-color: var(--pink-bd); }
+  .card { border-radius:var(--radius); border:1px solid var(--border); padding:1.25rem 1.5rem; margin-bottom:1rem; box-shadow:0 1px 6px rgba(0,0,0,.06); }
+  .card.q1 { background:linear-gradient(135deg,var(--p-light) 0%,#fff 60%); border-color:var(--p-mid); }
+  .card.q2 { background:linear-gradient(135deg,var(--gold-bg) 0%,#fff 60%); border-color:var(--gold-bd); }
+  .card.q3 { background:linear-gradient(135deg,var(--green-bg) 0%,#fff 60%); border-color:var(--green-bd); }
+  .card.q4 { background:linear-gradient(135deg,var(--blue-bg) 0%,#fff 60%); border-color:var(--blue-bd); }
+  .card.q5 { background:linear-gradient(135deg,var(--pink-bg) 0%,#fff 60%); border-color:var(--pink-bd); }
 
-  .q-label {
-    font-size: 11px; font-weight: 700; letter-spacing: .08em;
-    text-transform: uppercase; margin-bottom: .8rem;
-    display: flex; align-items: center; gap: 6px;
-  }
-  .q1 .q-label { color: var(--p); }
-  .q2 .q-label { color: var(--gold); }
-  .q3 .q-label { color: var(--green); }
-  .q4 .q-label { color: var(--blue); }
-  .q5 .q-label { color: var(--pink); }
+  .q-label { font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.8rem; }
+  .q1 .q-label { color:var(--p); } .q2 .q-label { color:var(--gold); }
+  .q3 .q-label { color:var(--green); } .q4 .q-label { color:var(--blue); }
+  .q5 .q-label { color:var(--pink); }
 
-  .q-hint { font-size: 12.5px; margin-bottom: .875rem; line-height: 1.5; }
-  .q2 .q-hint { color: #8a6000; }
-  .q3 .q-hint { color: #388E3C; }
-  .q4 .q-hint { color: #1976D2; }
-  .q5 .q-hint { color: #C2185B; }
+  .q-hint { font-size:12.5px; margin-bottom:.875rem; line-height:1.5; }
+  .q2 .q-hint { color:#8a6000; } .q3 .q-hint { color:#388E3C; }
+  .q4 .q-hint { color:#1976D2; } .q5 .q-hint { color:#C2185B; }
 
-  .field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
-  .field:last-child { margin-bottom: 0; }
-  .field label { font-size: 12px; color: var(--tx2); font-weight: 500; }
-  .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .field { display:flex; flex-direction:column; gap:4px; margin-bottom:10px; }
+  .field:last-child { margin-bottom:0; }
+  .field label { font-size:12px; color:var(--tx2); font-weight:500; }
+  .field-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 
   input[type="text"], textarea {
-    width: 100%; font-family: 'Inter', sans-serif; font-size: 13.5px;
-    color: var(--tx); background: rgba(255,255,255,.85);
-    border: 1px solid #D0B8E0; border-radius: 8px; padding: 9px 12px;
-    outline: none; transition: border-color .2s, box-shadow .2s; resize: vertical;
+    width:100%; font-family:'Inter',sans-serif; font-size:13.5px; color:var(--tx);
+    background:rgba(255,255,255,.85); border:1px solid #D0B8E0; border-radius:8px;
+    padding:9px 12px; outline:none; transition:border-color .2s,box-shadow .2s; resize:vertical;
   }
   input[type="text"]:focus, textarea:focus {
-    border-color: var(--p2); box-shadow: 0 0 0 3px rgba(142,68,173,.15); background: #fff;
+    border-color:var(--p2); box-shadow:0 0 0 3px rgba(142,68,173,.15); background:#fff;
   }
-  textarea { min-height: 70px; }
+  textarea { min-height:70px; }
 
-  .options { display: flex; flex-direction: column; gap: 6px; }
+  .options { display:flex; flex-direction:column; gap:6px; }
   .opt {
-    display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px;
-    border-radius: 8px; cursor: pointer; border: 1px solid #DDD;
-    background: rgba(255,255,255,.7); font-size: 13.5px; color: var(--tx);
-    transition: all .15s; user-select: none; line-height: 1.4;
+    display:flex; align-items:flex-start; gap:10px; padding:9px 12px;
+    border-radius:8px; cursor:pointer; border:1px solid #DDD;
+    background:rgba(255,255,255,.7); font-size:13.5px; color:var(--tx);
+    transition:all .15s; user-select:none; line-height:1.4;
   }
-  .opt:hover { border-color: var(--p2); background: var(--p-light); }
+  .opt:hover { border-color:var(--p2); background:var(--p-light); }
   .opt input[type="checkbox"], .opt input[type="radio"] {
-    width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;
-    accent-color: var(--p); cursor: pointer;
+    width:16px; height:16px; flex-shrink:0; margin-top:2px; accent-color:var(--p); cursor:pointer;
   }
-  .opt.sel-cb { background: #EDE0F5; border-color: var(--p); color: #3C3489; }
-  .opt.sel-rb { background: #EDE0F5; border-color: var(--p); }
-  .opt .opt-sub { font-size: 11.5px; color: var(--tx2); margin-top: 2px; }
-  .opt.sel-rb .opt-sub { color: var(--p2); }
+  .opt.sel-cb { background:#EDE0F5; border-color:var(--p); color:#3C3489; }
+  .opt.sel-rb { background:#EDE0F5; border-color:var(--p); }
+  .opt .opt-sub { font-size:11.5px; color:var(--tx2); margin-top:2px; }
+  .opt.sel-rb .opt-sub { color:var(--p2); }
 
-  #q2-error { display: none; font-size: 12px; color: #C0392B; margin-top: 8px; font-weight: 500; }
-  #q2-autre-field { display: none; margin-top: 6px; }
+  #q2-error { display:none; font-size:12px; color:#C0392B; margin-top:8px; font-weight:500; }
+  #q2-autre-field { display:none; margin-top:6px; }
 
-  .scale { display: grid; grid-template-columns: repeat(5,1fr); gap: 8px; margin-bottom: 1rem; }
+  .scale { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-bottom:1rem; }
   .scale-btn {
-    padding: 12px 4px; border-radius: 8px; border: 1.5px solid #DDD;
-    background: rgba(255,255,255,.7); cursor: pointer;
-    display: flex; flex-direction: column; align-items: center; gap: 3px;
-    transition: all .2s; font-family: 'Inter', sans-serif;
+    padding:12px 4px; border-radius:8px; border:1.5px solid #DDD;
+    background:rgba(255,255,255,.7); cursor:pointer;
+    display:flex; flex-direction:column; align-items:center; gap:3px;
+    transition:all .2s; font-family:'Inter',sans-serif;
   }
-  .scale-btn:hover { transform: translateY(-1px); box-shadow: 0 2px 8px rgba(0,0,0,.1); }
-  .scale-btn .num { font-size: 20px; font-weight: 600; color: var(--tx); }
-  .scale-btn .lbl { font-size: 10px; color: var(--tx2); text-align: center; line-height: 1.2; }
+  .scale-btn:hover { transform:translateY(-1px); box-shadow:0 2px 8px rgba(0,0,0,.1); }
+  .scale-btn .num { font-size:20px; font-weight:600; color:var(--tx); }
+  .scale-btn .lbl { font-size:10px; color:var(--tx2); text-align:center; line-height:1.2; min-height:12px; }
 
   /* FOOTER */
-  .form-footer {
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 12px; margin-top: .5rem; padding-top: 1rem;
-  }
-  .form-footer p { font-size: 12px; color: #999; }
+  .form-footer { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:.5rem; padding-top:1rem; }
+  .form-footer p { font-size:12px; color:#999; }
 
   .btn-submit {
-    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
-    padding: 12px 28px; border-radius: 8px; border: none;
-    background: linear-gradient(135deg, var(--p), var(--p2));
-    color: white; cursor: pointer;
-    display: flex; align-items: center; gap: 8px;
-    transition: opacity .2s, transform .1s;
-    box-shadow: 0 2px 10px rgba(91,44,111,.35);
+    font-family:'Inter',sans-serif; font-size:14px; font-weight:700;
+    padding:12px 26px; border-radius:8px; border:none;
+    background:linear-gradient(135deg,var(--p),var(--p2)); color:white;
+    cursor:pointer; display:flex; align-items:center; gap:8px;
+    transition:opacity .2s,transform .1s; box-shadow:0 2px 10px rgba(91,44,111,.35);
   }
-  .btn-submit:hover { opacity: .9; transform: translateY(-1px); }
-  .btn-submit:active { transform: scale(.98); }
-  .btn-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+  .btn-submit:hover { opacity:.9; transform:translateY(-1px); }
+  .btn-submit:active { transform:scale(.98); }
+  .btn-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; }
 
   .btn-print {
-    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500;
-    padding: 10px 18px; border-radius: 8px;
-    border: 1px solid var(--p); color: var(--p); background: transparent;
-    cursor: pointer; display: flex; align-items: center; gap: 6px;
-    transition: background .15s;
+    font-family:'Inter',sans-serif; font-size:13px; font-weight:500;
+    padding:10px 18px; border-radius:8px; border:1px solid var(--p);
+    color:var(--p); background:transparent; cursor:pointer;
+    display:flex; align-items:center; gap:6px; transition:background .15s;
   }
-  .btn-print:hover { background: var(--p-light); }
+  .btn-print:hover { background:var(--p-light); }
 
-  /* SUCCESS */
   #success-msg {
-    display: none;
-    background: linear-gradient(135deg, #E8F5E9, #fff);
-    border: 1px solid #81C784; border-radius: var(--radius);
-    padding: 2rem; text-align: center; margin-top: 1rem;
+    display:none; background:linear-gradient(135deg,#E8F5E9,#fff);
+    border:1px solid #81C784; border-radius:var(--radius);
+    padding:2.5rem; text-align:center; margin-top:.5rem;
   }
-  #success-msg .check { font-size: 48px; margin-bottom: 1rem; }
-  #success-msg h2 { font-size: 20px; font-weight: 700; color: #2E7D32; margin-bottom: .5rem; }
-  #success-msg p { font-size: 14px; color: #388E3C; }
-
-  /* ERROR */
+  #success-msg .check { font-size:52px; margin-bottom:1rem; }
+  #success-msg h2 { font-size:20px; font-weight:700; color:#2E7D32; margin-bottom:.5rem; }
+  #success-msg p { font-size:14px; color:#388E3C; line-height:1.6; }
   #submit-error {
-    display: none; font-size: 13px; color: #C0392B;
-    background: #FDEDEC; border: 1px solid #F1948A;
-    border-radius: 8px; padding: .75rem 1rem; margin-top: .75rem;
+    display:none; font-size:13px; color:#C0392B;
+    background:#FDEDEC; border:1px solid #F1948A;
+    border-radius:8px; padding:.75rem 1rem; margin-top:.75rem;
   }
 
   @media print {
-    body { background: white; padding: 0; }
-    .btn-submit, .btn-print { display: none; }
-    .card { box-shadow: none; break-inside: avoid; }
-    .header, .card.q1, .card.q2, .card.q3, .card.q4, .card.q5 {
-      -webkit-print-color-adjust: exact; print-color-adjust: exact;
-    }
+    body { background:white; padding:0; }
+    .btn-submit, .btn-print, .lang-toggle { display:none; }
+    .card { box-shadow:none; break-inside:avoid; }
+    .header, .card { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   }
-  @media (max-width: 500px) {
-    .field-grid { grid-template-columns: 1fr; }
-    .header { flex-direction: column; text-align: center; }
-    .scale-btn .lbl { display: none; }
+  @media (max-width:520px) {
+    .field-grid { grid-template-columns:1fr; }
+    .header { flex-direction:column; align-items:flex-start; gap:1rem; }
+    .lang-toggle { align-self:flex-end; }
   }
 </style>
 </head>
@@ -220,8 +179,7 @@
     <div class="logo-circle">
       <!--
         POUR AJOUTER TON LOGO :
-        Remplace ce bloc <svg> par :
-        <img src="logo.png" alt="23 MindSet" />
+        Remplace ce bloc <svg> par : <img src="logo.png" alt="23 MindSet" />
       -->
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.3 6L15 19H9l-.7-4C6.3 13.7 5 11.5 5 9a7 7 0 0 1 7-7z"/>
@@ -230,105 +188,100 @@
     </div>
     <div class="header-text">
       <p class="supra">23 MindSet · Fares ATBA</p>
-      <h1>Questionnaire de recueil des attentes</h1>
-      <p class="sub">Formation Management · Qantev · Juillet 2026</p>
+      <h1 data-i18n="title"></h1>
+      <p class="sub" data-i18n="sub"></p>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
     </div>
   </div>
 
-  <div class="intro-banner">
-    <strong>Confidentiel · 5 minutes.</strong> Ce questionnaire n'a pas de bonne ou mauvaise réponse — son seul but est d'adapter la formation à vos réalités de terrain.
-  </div>
+  <div class="intro-banner" data-i18n-html="intro"></div>
 
-  <!-- FORMULAIRE -->
   <form id="questionnaire" action="https://formspree.io/f/maqrdlvn" method="POST" novalidate>
-
-    <!-- Champs cachés Formspree -->
-    <input type="hidden" name="_subject" value="Questionnaire pré-formation Qantev" />
+    <input type="hidden" name="_subject" id="form-subject" value="" />
     <input type="hidden" name="_language" value="fr" />
 
     <!-- Q1 -->
     <div class="card q1">
-      <p class="q-label"><span>👤</span> 1 · Ton rôle &amp; ton équipe</p>
+      <p class="q-label" data-i18n="q1_label"></p>
       <div class="field">
-        <label for="q1-poste">Ton poste / titre</label>
-        <input type="text" id="q1-poste" name="1_poste" placeholder="ex : Head of Product" />
+        <label for="q1-poste" data-i18n="q1_poste_label"></label>
+        <input type="text" id="q1-poste" name="1_poste" data-i18n-ph="q1_poste_ph" />
       </div>
       <div class="field-grid">
         <div class="field">
-          <label for="q1-taille">Taille de ton équipe</label>
-          <input type="text" id="q1-taille" name="1_taille_equipe" placeholder="ex : 5 personnes" />
+          <label for="q1-taille" data-i18n="q1_taille_label"></label>
+          <input type="text" id="q1-taille" name="1_taille_equipe" data-i18n-ph="q1_taille_ph" />
         </div>
         <div class="field">
-          <label for="q1-anciennete">Ancienneté dans le rôle</label>
-          <input type="text" id="q1-anciennete" name="1_anciennete" placeholder="ex : 18 mois" />
+          <label for="q1-anciennete" data-i18n="q1_anciennete_label"></label>
+          <input type="text" id="q1-anciennete" name="1_anciennete" data-i18n-ph="q1_anciennete_ph" />
         </div>
       </div>
     </div>
 
     <!-- Q2 -->
     <div class="card q2">
-      <p class="q-label"><span>🎯</span> 2 · Ton principal défi de manager en ce moment</p>
-      <p class="q-hint">Coche jusqu'à 2 réponses</p>
+      <p class="q-label" data-i18n="q2_label"></p>
+      <p class="q-hint" data-i18n="q2_hint"></p>
       <div class="options" id="q2-opts"></div>
-      <p id="q2-error">2 réponses maximum.</p>
+      <p id="q2-error" data-i18n="q2_error"></p>
       <div id="q2-autre-field">
-        <input type="text" name="2_defi_autre" placeholder="Précise ici..." />
+        <input type="text" name="2_defi_autre" id="q2-autre-input" data-i18n-ph="q2_autre_ph" />
       </div>
     </div>
 
     <!-- Q3 -->
     <div class="card q3">
-      <p class="q-label"><span>📊</span> 3 · Tes attentes prioritaires</p>
-      <p class="q-hint">Parmi les 3 thèmes de la formation, lequel te semble le plus utile aujourd'hui ?</p>
+      <p class="q-label" data-i18n="q3_label"></p>
+      <p class="q-hint" data-i18n="q3_hint"></p>
       <div class="options" id="q3-opts" style="margin-bottom:1rem;"></div>
       <div class="field">
-        <label for="q3-why">Pourquoi ce thème en particulier ?</label>
-        <textarea id="q3-why" name="3_pourquoi" rows="2" placeholder="Ta réponse ici..."></textarea>
+        <label for="q3-why" data-i18n="q3_why_label"></label>
+        <textarea id="q3-why" name="3_pourquoi" rows="2" data-i18n-ph="q3_why_ph"></textarea>
       </div>
     </div>
 
     <!-- Q4 -->
     <div class="card q4">
-      <p class="q-label"><span>💬</span> 4 · Une situation concrète à traiter</p>
-      <p class="q-hint">Sans nommer les personnes — un cas réel, une tension, une décision difficile. Plus c'est concret, plus la formation sera utile.</p>
-      <textarea name="4_situation_concrete" rows="5" placeholder="Décris la situation ici..."></textarea>
+      <p class="q-label" data-i18n="q4_label"></p>
+      <p class="q-hint" data-i18n="q4_hint"></p>
+      <textarea name="4_situation_concrete" id="q4-ta" rows="5" data-i18n-ph="q4_ph"></textarea>
     </div>
 
     <!-- Q5 -->
     <div class="card q5">
-      <p class="q-label"><span>🌡️</span> 5 · Comment tu te sens dans ton rôle aujourd'hui ?</p>
-      <p class="q-hint">1 = Je rame souvent &nbsp;·&nbsp; 5 = Je me sens à l'aise</p>
+      <p class="q-label" data-i18n="q5_label"></p>
+      <p class="q-hint" data-i18n="q5_hint"></p>
       <input type="hidden" name="5_score_confiance" id="q5-hidden" value="" />
       <div class="scale" id="q5-scale"></div>
       <div class="field">
-        <label for="q5-mot">Un mot sur ce que tu ressens en ce moment (facultatif)</label>
-        <textarea id="q5-mot" name="5_ressenti" rows="2" placeholder="Facultatif..."></textarea>
+        <label for="q5-mot" data-i18n="q5_mot_label"></label>
+        <textarea id="q5-mot" name="5_ressenti" rows="2" data-i18n-ph="q5_mot_ph"></textarea>
       </div>
     </div>
 
-    <!-- Succès -->
+    <!-- Success -->
     <div id="success-msg">
       <div class="check">✅</div>
-      <h2>Merci, c'est envoyé !</h2>
-      <p>Fares ATBA a bien reçu tes réponses.<br/>À très vite pour la formation.</p>
+      <h2 data-i18n="success_title"></h2>
+      <p data-i18n-html="success_msg"></p>
     </div>
+    <div id="submit-error" data-i18n="submit_error"></div>
 
-    <!-- Erreur -->
-    <div id="submit-error">
-      Une erreur est survenue. Vérifie ta connexion et réessaie, ou contacte directement Fares ATBA.
-    </div>
-
-    <!-- FOOTER -->
+    <!-- Footer -->
     <div class="form-footer">
-      <p>© 2026 – 23 MindSet / ATBA Fares</p>
+      <p data-i18n="footer"></p>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <button type="button" class="btn-print" onclick="window.print()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-          Imprimer
+          <span data-i18n="btn_print"></span>
         </button>
         <button type="submit" class="btn-submit" id="btn-submit">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          Envoyer mes réponses
+          <span id="btn-submit-label" data-i18n="btn_submit"></span>
         </button>
       </div>
     </div>
@@ -337,32 +290,195 @@
 </main>
 
 <script>
-const q2Items = [
-  'Fixer des objectifs clairs et les suivre',
-  'Donner du feedback (positif ou correctif)',
-  'Déléguer efficacement',
-  'Adapter mon style selon les profils de mes collaborateurs',
-  'Gérer un conflit ou une tension dans l\'équipe',
-  'Motiver et maintenir l\'engagement de l\'équipe',
-  'Prendre des décisions dans l\'incertitude',
-  'Autre'
-];
-const q3Items = [
-  { label: 'Le Boss / Gestionnaire', sub: 'Fixer des objectifs, piloter, déléguer, décider' },
-  { label: 'Le Coach', sub: 'Donner du feedback, adapter son style, faire grandir l\'équipe' },
-  { label: 'Le Manager face aux conflits', sub: 'Comprendre les tensions, désamorcer, médier' }
-];
+// ── TRANSLATIONS ──────────────────────────────────────────────
+const T = {
+  fr: {
+    title: "Questionnaire de recueil des attentes",
+    sub: "Formation Management · Qantev · Juillet 2026",
+    intro: "<strong>Confidentiel · 5 minutes.</strong> Ce questionnaire n'a pas de bonne ou mauvaise réponse — son seul but est d'adapter la formation à vos réalités de terrain.",
+    q1_label: "👤 1 · Ton rôle & ton équipe",
+    q1_poste_label: "Ton poste / titre", q1_poste_ph: "ex : Head of Product",
+    q1_taille_label: "Taille de ton équipe", q1_taille_ph: "ex : 5 personnes",
+    q1_anciennete_label: "Ancienneté dans le rôle", q1_anciennete_ph: "ex : 18 mois",
+    q2_label: "🎯 2 · Ton principal défi de manager en ce moment",
+    q2_hint: "Coche jusqu'à 2 réponses",
+    q2_items: ["Fixer des objectifs clairs et les suivre","Donner du feedback (positif ou correctif)","Déléguer efficacement","Adapter mon style selon les profils de mes collaborateurs","Gérer un conflit ou une tension dans l'équipe","Motiver et maintenir l'engagement de l'équipe","Prendre des décisions dans l'incertitude","Autre"],
+    q2_autre_ph: "Précise ici...", q2_error: "2 réponses maximum.",
+    q3_label: "📊 3 · Tes attentes prioritaires",
+    q3_hint: "Parmi les 3 thèmes de la formation, lequel te semble le plus utile aujourd'hui ?",
+    q3_items: [
+      { label:"Le Boss / Gestionnaire", sub:"Fixer des objectifs, piloter, déléguer, décider" },
+      { label:"Le Coach", sub:"Donner du feedback, adapter son style, faire grandir l'équipe" },
+      { label:"Le Manager face aux conflits", sub:"Comprendre les tensions, désamorcer, médier" }
+    ],
+    q3_why_label: "Pourquoi ce thème en particulier ?", q3_why_ph: "Ta réponse ici...",
+    q4_label: "💬 4 · Une situation concrète à traiter",
+    q4_hint: "Sans nommer les personnes — un cas réel, une tension, une décision difficile. Plus c'est concret, plus la formation sera utile.",
+    q4_ph: "Décris la situation ici...",
+    q5_label: "🌡️ 5 · Comment tu te sens dans ton rôle aujourd'hui ?",
+    q5_hint: "1 = Je rame souvent · 5 = Je me sens à l'aise",
+    q5_scale_1: "Je rame", q5_scale_5: "À l'aise",
+    q5_mot_label: "Un mot sur ce que tu ressens en ce moment (facultatif)", q5_mot_ph: "Facultatif...",
+    btn_print: "Imprimer", btn_submit: "Envoyer mes réponses", btn_sending: "Envoi en cours…",
+    success_title: "Merci, c'est envoyé !",
+    success_msg: "Fares ATBA a bien reçu tes réponses.<br/>À très vite pour la formation.",
+    submit_error: "Une erreur est survenue. Vérifie ta connexion et réessaie, ou contacte directement Fares ATBA.",
+    footer: "© 2026 – 23 MindSet / ATBA Fares — Tous droits réservés",
+    subject: "Questionnaire pré-formation Qantev"
+  },
+  en: {
+    title: "Needs & expectations survey",
+    sub: "Management Training · Qantev · July 2026",
+    intro: "<strong>Confidential · 5 minutes.</strong> There are no right or wrong answers — this survey's only purpose is to tailor the training to your real-life situations.",
+    q1_label: "👤 1 · Your role & your team",
+    q1_poste_label: "Your job title", q1_poste_ph: "e.g. Head of Product",
+    q1_taille_label: "Team size", q1_taille_ph: "e.g. 5 people",
+    q1_anciennete_label: "Time in the role", q1_anciennete_ph: "e.g. 18 months",
+    q2_label: "🎯 2 · Your main challenge as a manager right now",
+    q2_hint: "Select up to 2 answers",
+    q2_items: ["Setting clear objectives and tracking them","Giving feedback (positive or corrective)","Delegating effectively","Adapting my style to different team members","Managing a conflict or tension in the team","Motivating and maintaining team engagement","Making decisions under uncertainty","Other"],
+    q2_autre_ph: "Specify here...", q2_error: "2 answers maximum.",
+    q3_label: "📊 3 · Your priority expectations",
+    q3_hint: "Among the 3 training themes, which one feels most useful for you today?",
+    q3_items: [
+      { label:"The Manager / Results Driver", sub:"Setting objectives, tracking results, delegating, deciding" },
+      { label:"The Coach", sub:"Giving feedback, adapting your style, developing your team" },
+      { label:"The Manager facing conflicts", sub:"Understanding tensions, de-escalating, mediating" }
+    ],
+    q3_why_label: "Why this theme in particular?", q3_why_ph: "Your answer here...",
+    q4_label: "💬 4 · A concrete situation you'd like us to address",
+    q4_hint: "Without naming individuals — a real case, a tension, a difficult decision. The more concrete, the more useful the training.",
+    q4_ph: "Describe the situation here...",
+    q5_label: "🌡️ 5 · How do you feel in your role today?",
+    q5_hint: "1 = I'm struggling · 5 = I feel confident",
+    q5_scale_1: "Struggling", q5_scale_5: "Confident",
+    q5_mot_label: "One word about how you feel in this role right now (optional)", q5_mot_ph: "Optional...",
+    btn_print: "Print", btn_submit: "Submit my answers", btn_sending: "Sending…",
+    success_title: "Thank you, it's been sent!",
+    success_msg: "Fares ATBA has received your answers.<br/>See you soon for the training.",
+    submit_error: "Something went wrong. Please check your connection and try again, or contact Fares ATBA directly.",
+    footer: "© 2026 – 23 MindSet / ATBA Fares — All rights reserved",
+    subject: "Pre-training questionnaire Qantev"
+  }
+};
 
-// Q2
-const q2El = document.getElementById('q2-opts');
-q2Items.forEach((label, i) => {
-  const lbl = document.createElement('label');
-  lbl.className = 'opt';
-  lbl.innerHTML = `<input type="checkbox" name="2_defi" value="${label}" id="q2cb-${i}" /><span>${label}</span>`;
-  q2El.appendChild(lbl);
-});
-q2El.addEventListener('change', e => {
-  const all = [...q2El.querySelectorAll('input[type=checkbox]')];
+// ── STATE ─────────────────────────────────────────────────────
+let currentLang = 'fr';
+let q5Val = 0;
+const scaleColors = ['#E53935','#F4511E','#FB8C00','#43A047','#2E7D32'];
+
+// ── SET LANGUAGE ──────────────────────────────────────────────
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  const t = T[lang];
+
+  // Toggle buttons
+  document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+  // Static text (data-i18n)
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+
+  // HTML content (data-i18n-html)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Placeholders (data-i18n-ph)
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+
+  // Subject hidden field
+  document.getElementById('form-subject').value = t.subject;
+
+  // Rebuild Q2 options
+  buildQ2(t);
+
+  // Rebuild Q3 options
+  buildQ3(t);
+
+  // Update Q5 scale labels
+  const s1 = document.querySelector('#q5-scale .scale-btn:first-child .lbl');
+  const s5 = document.querySelector('#q5-scale .scale-btn:last-child .lbl');
+  if (s1) s1.textContent = t.q5_scale_1;
+  if (s5) s5.textContent = t.q5_scale_5;
+
+  // Restore submit button text if not disabled
+  if (!document.getElementById('btn-submit').disabled) {
+    document.getElementById('btn-submit-label').textContent = t.btn_submit;
+  }
+}
+
+// ── BUILD Q2 ──────────────────────────────────────────────────
+function buildQ2(t) {
+  const container = document.getElementById('q2-opts');
+  const wasChecked = [...container.querySelectorAll('input:checked')].map(cb => cb.value);
+  container.innerHTML = '';
+  t.q2_items.forEach((label, i) => {
+    const lbl = document.createElement('label');
+    lbl.className = 'opt' + (wasChecked.includes(label) ? ' sel-cb' : '');
+    lbl.innerHTML = `<input type="checkbox" name="2_defi" value="${label}" id="q2cb-${i}" ${wasChecked.includes(label)?'checked':''} /><span>${label}</span>`;
+    container.appendChild(lbl);
+  });
+  document.getElementById('q2-error').textContent = t.q2_error;
+  document.getElementById('q2-autre-input').placeholder = t.q2_autre_ph;
+}
+
+// ── BUILD Q3 ──────────────────────────────────────────────────
+function buildQ3(t) {
+  const container = document.getElementById('q3-opts');
+  const wasChecked = container.querySelector('input:checked')?.value;
+  container.innerHTML = '';
+  t.q3_items.forEach((item, i) => {
+    const lbl = document.createElement('label');
+    lbl.className = 'opt' + (wasChecked === item.label ? ' sel-rb' : '');
+    lbl.style.alignItems = 'flex-start';
+    lbl.innerHTML = `<input type="radio" name="3_theme_prioritaire" value="${item.label}" ${wasChecked===item.label?'checked':''} /><div><div style="font-weight:600;">${item.label}</div><div class="opt-sub">${item.sub}</div></div>`;
+    container.appendChild(lbl);
+  });
+}
+
+// ── BUILD Q5 SCALE ───────────────────────────────────────────
+function buildQ5() {
+  const container = document.getElementById('q5-scale');
+  container.innerHTML = '';
+  [1,2,3,4,5].forEach(n => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'scale-btn';
+    btn.id = `q5-${n}`;
+    const isEdge = n === 1 || n === 5;
+    btn.innerHTML = `<span class="num">${n}</span>${isEdge ? `<span class="lbl"></span>` : ''}`;
+    btn.addEventListener('click', () => {
+      q5Val = n;
+      document.getElementById('q5-hidden').value = n;
+      [1,2,3,4,5].forEach(v => {
+        const b = document.getElementById(`q5-${v}`);
+        if (v <= n) {
+          b.style.background = scaleColors[n-1] + '22';
+          b.style.borderColor = scaleColors[n-1];
+          b.querySelector('.num').style.color = scaleColors[n-1];
+        } else {
+          b.style.background = 'rgba(255,255,255,.7)';
+          b.style.borderColor = '#DDD';
+          b.querySelector('.num').style.color = 'var(--tx)';
+        }
+      });
+    });
+    container.appendChild(btn);
+  });
+}
+
+// ── Q2 EVENTS ────────────────────────────────────────────────
+document.getElementById('q2-opts').addEventListener('change', e => {
+  const all = [...document.querySelectorAll('#q2-opts input[type=checkbox]')];
   const checked = all.filter(c => c.checked);
   const err = document.getElementById('q2-error');
   const autreField = document.getElementById('q2-autre-field');
@@ -373,53 +489,16 @@ q2El.addEventListener('change', e => {
     return;
   }
   all.forEach(cb => cb.closest('label').classList.toggle('sel-cb', cb.checked));
-  const autreCb = document.getElementById(`q2cb-${q2Items.length - 1}`);
-  autreField.style.display = autreCb && autreCb.checked ? 'block' : 'none';
+  const lastIdx = T[currentLang].q2_items.length - 1;
+  const autreCb = document.getElementById(`q2cb-${lastIdx}`);
+  autreField.style.display = autreCb?.checked ? 'block' : 'none';
 });
 
-// Q3
-const q3El = document.getElementById('q3-opts');
-q3Items.forEach((item, i) => {
-  const lbl = document.createElement('label');
-  lbl.className = 'opt';
-  lbl.style.alignItems = 'flex-start';
-  lbl.innerHTML = `<input type="radio" name="3_theme_prioritaire" value="${item.label}" /><div><div style="font-weight:600;">${item.label}</div><div class="opt-sub">${item.sub}</div></div>`;
-  q3El.appendChild(lbl);
-});
-q3El.addEventListener('change', () => {
-  q3El.querySelectorAll('label').forEach(l => l.classList.toggle('sel-rb', l.querySelector('input').checked));
+document.getElementById('q3-opts').addEventListener('change', () => {
+  document.querySelectorAll('#q3-opts label').forEach(l => l.classList.toggle('sel-rb', l.querySelector('input').checked));
 });
 
-// Q5 échelle
-const scaleColors = ['#E53935','#F4511E','#FB8C00','#43A047','#2E7D32'];
-const scaleLabels = { 1:'Je rame', 5:"À l'aise" };
-const q5El = document.getElementById('q5-scale');
-const q5Hidden = document.getElementById('q5-hidden');
-[1,2,3,4,5].forEach(n => {
-  const btn = document.createElement('button');
-  btn.type = 'button';
-  btn.className = 'scale-btn';
-  btn.id = `q5-${n}`;
-  btn.innerHTML = `<span class="num">${n}</span>${scaleLabels[n]?`<span class="lbl">${scaleLabels[n]}</span>`:''}`;
-  btn.addEventListener('click', () => {
-    q5Hidden.value = n;
-    [1,2,3,4,5].forEach(v => {
-      const b = document.getElementById(`q5-${v}`);
-      if (v <= n) {
-        b.style.background = scaleColors[n-1] + '22';
-        b.style.borderColor = scaleColors[n-1];
-        b.querySelector('.num').style.color = scaleColors[n-1];
-      } else {
-        b.style.background = 'rgba(255,255,255,.7)';
-        b.style.borderColor = '#DDD';
-        b.querySelector('.num').style.color = 'var(--tx)';
-      }
-    });
-  });
-  q5El.appendChild(btn);
-});
-
-// SOUMISSION AJAX (pas de redirection)
+// ── FORM SUBMIT ──────────────────────────────────────────────
 const form = document.getElementById('questionnaire');
 const btnSubmit = document.getElementById('btn-submit');
 const successMsg = document.getElementById('success-msg');
@@ -427,31 +506,29 @@ const submitError = document.getElementById('submit-error');
 
 form.addEventListener('submit', async e => {
   e.preventDefault();
+  const t = T[currentLang];
   btnSubmit.disabled = true;
-  btnSubmit.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg> Envoi en cours…`;
+  document.getElementById('btn-submit-label').textContent = t.btn_sending;
   submitError.style.display = 'none';
-
   try {
-    const data = new FormData(form);
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
+    const res = await fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} });
     if (res.ok) {
       form.querySelectorAll('.card').forEach(c => c.style.display = 'none');
-      form.querySelector('.intro-banner') && (form.querySelector('.intro-banner').style.display = 'none');
+      document.querySelector('.intro-banner').style.display = 'none';
       successMsg.style.display = 'block';
       form.querySelector('.form-footer').style.display = 'none';
-    } else {
-      throw new Error('Erreur serveur');
-    }
+    } else { throw new Error(); }
   } catch {
+    submitError.textContent = T[currentLang].submit_error;
     submitError.style.display = 'block';
     btnSubmit.disabled = false;
-    btnSubmit.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Envoyer mes réponses`;
+    document.getElementById('btn-submit-label').textContent = t.btn_submit;
   }
 });
+
+// ── INIT ─────────────────────────────────────────────────────
+buildQ5();
+setLang('fr');
 </script>
 </body>
 </html>
